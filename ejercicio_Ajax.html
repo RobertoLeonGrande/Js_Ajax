@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="es">
+    <head>
+        <title>Laboratorio: JavaScript y Ajax</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="Ajax y JavaScript">
+        <meta name="keywords" content="HTML, CSS, JavaScript, Ajax">
+        <meta name="author" content="Roberto Leon">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="lab1_style.css">
+    </head>
+    <body>
+        <header class="header-design">
+            <div class="grid-header">
+                <div class="title-bar-item">
+                    <h2>Laboratorio: Tecnologías JavaScript y Ajax</h2> 
+                </div>    
+                <nav class="title-bar-item align-center">
+                    <ul>
+                        <li><a href="./index.html"><h4>Introducción</h4></a></li>
+                        <li><a href="./ejercicio_JS.html"><h4>JavaScript</h4></a></li>
+                        <li><a href="./ejercicio_Ajax.html"><h4>Ajax</h4></a></li>
+                        
+                    </ul>
+                </nav>
+                <div class="clear"></div><!--ES un corte para que no haya más capas qeu floten aunque entren-->
+            </div>
+        </header>
+        <main class="main-design">
+            <div class="grid-main">
+                <section>
+                    <div class="section-title"><h2>Ajax</h2></div>
+                    <article class="article-design">
+                        <form action="#" id="formulario" class="form-design"><!--validar formulaio-->
+                          <label for="recurso">URL:</label>
+                          <input type="url" id="recurso" name="recurso" size="70" />
+                          <input type="button" id="enviar" name="enviar" value="Mostrar contenidos" />
+                        </form>
+                        <div id="secundarioEstados">
+                            <h2>Estados de la petición:</h2>
+                            <div id="estados"></div>
+                        </div>
+                        <div id="secundarioCodigo">
+                            <h2>Código de estado:</h2>
+                            <div id="codigo"></div>
+                        </div>
+                        <div class="clear"></div>
+                        <div id="principalContenido">
+                            <h2>Contenidos del archivo:</h2>
+                            <div id="contenidos"></div>
+                          </div>
+                        <div id="principalCabeceras">
+                            <h2>Cabeceras HTTP de la respuesta del servidor:</h2>
+                            <div id="cabeceras"></div>
+                        </div>
+                        <div class="clear"></div>
+                    </article>
+                </section>
+            </div>
+        </main>
+        <footer>
+            <div class="footer-design">
+                <div class="grid-footer">
+                    <div class="footer-bar">
+                        <h4>Actividad desarrollada por Roberto León Grande</h4>
+                        <a href="mailto:roberto.leon022@comunidadunir.net"> <h4>roberto.leon022@comunidadunir.net</h4></a>
+                    </div>
+                </div>
+            </div>       
+        </footer>
+        <!-- Se carga al final para que sea más rápido -->
+        <script type="text/javascript" src="codeAjax.js"></script>
+    </body>
+</html>

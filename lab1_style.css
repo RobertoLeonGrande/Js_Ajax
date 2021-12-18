@@ -1,0 +1,250 @@
+* { /* base de estilo*/
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;/* Esto es para que no aumente la capa pese a tener margenes (pading)*/
+    font: 13px Arial, Helvetica, sans-serif; /* orden de prioridad de las fuentes */
+}
+
+footer { /* Estili general del pie de pagina*/
+    /* color: #ffffffda; */
+    background-color: rgb(156, 211, 255);
+}
+
+header { /* Estilo general de la cabecera*/
+    /* color: #ffffffda; */
+    background-color: rgb(156, 211, 255);
+}
+
+main {
+    /* color: #ffffffda; */
+    /* background-color: rgb(156, 211, 255);  */
+    background-color: rgb(255, 255, 255);  
+}
+
+
+.header-design,
+.main-design,
+.footer-design {
+    width: 100%; 
+}
+
+.grid-header{ /* centra el contenido de la cabecera y evita que pase del maximo fijado*/
+    width: 100%;
+    max-width: 1024px;
+    margin: auto;
+    padding: 10px 10px 10px 10px;
+}
+
+.title-bar-item{
+    /*float: left;/* elemento flotante a la izauierda*/
+    vertical-align: middle;
+    width: 100%;/* Tamaño del elemento*/
+    margin-bottom: 10px;
+}
+
+.title-bar-item img,/* Estilo para la imagenes y titulos dentro de la clase*/
+.title-bar-item h2{
+    display: inline;
+    vertical-align: middle;
+    font-size: 4em;
+}
+
+.title-bar-item ul{/* Estilo para la ul dentro de la clase*/
+    display: inline-block;
+    list-style: none;   
+}
+
+.title-bar-item li, .title-bar-item h4{ /* Estilo para li imagenes dentro de la clase*/
+    display: inline-block;
+    font-size: 2.5em;
+    padding-left: 30px;
+}
+
+/* Estilo para los link*/
+.title-bar-item a:link,a:visited { text-decoration: none; color: #ffffffda; }
+.title-bar-item a:active { text-decoration: none; }
+.title-bar-item a:hover { color: #b3b3b3; text-decoration: none; }
+
+.align-center{
+    text-align: center;
+    padding: 0px 0px 0px 0px;
+}
+
+.clear{/* Evita que los elementos sigan flotando*/
+    clear: both;
+}
+
+.main-design {
+    padding: 10px 10px 10px 10px;
+}
+
+.grid-main {/* centra el contenido del cuerpo y evita que pase del maximo fijado*/
+    width: 100%;
+    max-width: 1024px;
+    margin: auto;
+}
+
+.section-title {
+    margin: 0px 0px 0px 0px;
+    padding: 0px 10px 0px 10px; 
+    font-size: 1em;
+    line-height: 1.8;
+    /* color: #865454; */
+}
+
+.section-title h2{/* Estilo para los h2 dentro de la clase*/
+    font-size: 2.5em;
+    line-height: 1.8;
+}
+
+.article-design{
+    /* border: 3px solid; */
+    border-left: 3px solid;
+    border-right: 3px solid;
+    border-color: rgb(156, 211, 255);
+    /* border-color: #b3b3b3; */
+    margin: 30px 0px 30px 0px;
+    padding: 10px;
+}
+
+.article-content {
+    padding: 10px 30px;
+    font-size: 1.4em;
+}
+
+.article-content p {
+    font-size: 1em;
+}
+
+.article-content li{
+    font-size: 1.4em;
+}
+
+.article-title h3{/* Estilo para los h2 dentro de la clase*/
+    font-size: 2em;
+}
+
+.article-title h4{/* Estilo para los h4 dentro de la clase*/
+    font-size: 1.4em;
+    line-height: 1.8;
+}
+.article-title h5{/* Estilo para los h5 dentro de la clase*/
+    font-size: 1.6em;
+    text-align: left;
+    text-decoration: underline;
+    padding: 20px 10px 0px 10px;
+    line-height: 1.8;
+}
+
+.article-list ol li{
+    font-size: 1.4em;
+    padding: 3px 20px;
+}
+
+.form-design{
+    padding: 20px 20px 12px 10px;
+}
+.form-design label, .form-design input {
+    font-size: 1.4em;
+}
+.form-design span {
+    font-size: 1.4em;
+    font-weight: bold;
+}
+
+.grid-footer { /* centra el contenido del pie y evita que pase del maximo fijado*/
+    width: 100%;
+    max-width: 1024px;
+    margin: auto;
+    padding: 10px;
+}
+
+.footer-bar{
+    font-size: .9em;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    border-bottom-left-radius: 50px; 
+    /* color: #fbfbfb; */
+}
+
+.footer-bar h4{
+    font-size:1.4em;
+}
+.footer-bar a {
+    color: #000000;
+    font-size:1em;
+    text-decoration: none;
+}
+
+.footer-bar a:hover {
+    color: #b3b3b3;
+}
+
+h2 { margin-bottom: 0; font-size: 1.2em; }
+#recurso, #enviar { 
+    padding: .3em; 
+    font-size: 1.2em; 
+}
+
+#principalContenido{ 
+    float: left; 
+    width: 49%; 
+    margin-top: 10px; 
+    margin-bottom: 10px; 
+}
+
+#principalCabeceras{ 
+    float: right; 
+    width: 49%; 
+    margin-top: 10px; 
+    margin-bottom: 10px; 
+}
+
+#secundarioEstados { 
+    float: left; 
+    width: 49%;
+    margin-top: 10px; 
+    margin-bottom: 10px; 
+}
+
+#secundarioCodigo { 
+    float: right; 
+    width: 49%; 
+    margin-top: 10px; 
+    margin-bottom: 10px; 
+}
+
+ #contenidos, #estados, #cabeceras, #codigo {
+    border: 2px solid #CCC;
+    background: #FAFAFA;
+    padding: 1em;
+    white-space: pre;
+}
+
+#contenidos {
+    min-height: 450px;
+    /* max-height: 500px; */
+    overflow: auto;
+}
+
+#estados {
+    /* float: left; width: 50%;  */
+    min-height: 50px;
+    max-height: 50px; 
+    overflow: auto;
+}
+
+#cabeceras {
+    min-height: 450px;
+    /* max-height: 500px; */
+    overflow: auto;
+}
+
+#codigo { 
+    /* float: right; width: 50%; */
+    min-height: 50px; 
+    max-height: 50px;
+    overflow: auto;
+}
+
