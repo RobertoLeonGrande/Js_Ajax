@@ -1,8 +1,9 @@
 //javaScript code
 document.addEventListener("DOMContentLoaded",function(){
 
-
-        const validarPalindromo = document.getElementById("inputPalindromo");// falta añadir si el elemento existe
+        // se crean las variables para almacenar los elementos y poder mostrarlos en los inputs
+        // se les añase el listener con su evento correspondiente y la llamada a su función
+        const validarPalindromo = document.getElementById("inputPalindromo");
         validarPalindromo.addEventListener("keyup", ejercicio_1);
 
         const validarNumeros = document.getElementById("validar-2");
@@ -14,7 +15,7 @@ document.addEventListener("DOMContentLoaded",function(){
         const validarCadena2 = document.getElementById("inputFrase2");
         validarCadena2.addEventListener("keyup", ejercicio_4);           
 
-
+    // funcion que resulve el ejercicio 1
     function ejercicio_1(){
         let text = document.getElementById("inputPalindromo").value;// se captura el objeto input y se almacena en la variable su valor como string
         const regex = /,/gi;// expresion regular para encontrar comas
@@ -30,15 +31,15 @@ document.addEventListener("DOMContentLoaded",function(){
         }else if (text.length > 1) {
             //Se le da la vuelta a string de text y se compara para ver si son iguales 
             if (text === text.split('').reverse().join('').replace(regex,'')) {
-            palindromoResult.innerHTML = "PALÍNDROMO"
+            palindromoResult.innerHTML = "SI ES PALÍNDROMO"
             } else {
-                palindromoResult.innerHTML = "NO PALÍNDROMO"
+                palindromoResult.innerHTML = "NO ES PALÍNDROMO"
             } 
         } else {
             palindromoResult.innerHTML = "NO HAY DATOS"
         }
     }
-
+    // funcion que resulve el ejercicio 2
     function ejercicio_2(){
         // se capturan los ebjetos inpunt y se guarda el valor como numero
         let num1 = document.getElementById("inputNum-1").valueAsNumber;// value devuelve string
@@ -57,7 +58,7 @@ document.addEventListener("DOMContentLoaded",function(){
             numResult.innerHTML = "Introduzca valores validos";// si lo datos no son correctos se indica
         }
     }
-
+    // funcion que resulve el ejercicio 3
     function ejercicio_3(){
         // se captura el objeto input y se almacena en la variable su valor como string
         let cadena = document.getElementById("inputFrase1").value;
@@ -67,29 +68,49 @@ document.addEventListener("DOMContentLoaded",function(){
         if(cadena != ''){
             // Se llama a la función vocales para procesarlas y se almacena el mapa devuelto con las ocurrencias
             let ocurrenciasVocales = vocales(cadena);
-            let vocalesExistentes = "";
-            //Se recorre el mapa por clave y se añade a la variable que muestra las vocales
-            for( let vocal of ocurrenciasVocales.keys()){
-                vocalesExistentes += vocal + ", ";
+            // si ocurrenciasVocales esta vacia
+            if (ocurrenciasVocales === ''){
+                // es qeu no hay vocales
+                frase1Result.innerHTML = 'No hay vocales';
+            }else{// si tiene valores
+                // se crea la variable para almacenarlos
+                let vocalesExistentes = "";
+                //Se recorre el mapa por clave y se añade a la variable que muestra las vocales
+                for( let vocal of ocurrenciasVocales.keys()){
+                    vocalesExistentes += vocal + ", ";
+                }
+                // se muestran las vocales en el input con id frase1Result
+                frase1Result.innerHTML = "Las vocales que hay son: " + vocalesExistentes;
             }
-            // se muestran las vocales en el input con id frase1Result
-            frase1Result.innerHTML = "Las vocales que hay son: " + vocalesExistentes;
+
         }else{
             frase1Result.innerHTML = "Introduzca una frase";
         }
 
     }
-
+    // funcion que resulve el ejercicio 4
     function ejercicio_4(){
+        // captura el input y lo almacena en la variable
         let cadena = document.getElementById("inputFrase2").value;
+        // variable del inptu para mostrar el resultado
         const frase2Result = document.getElementById("frase2Result");
+        //Se comprueba si al cadena tiene valores
         if(cadena != ''){
+            // se llama a vocales para obtener el mapa de vocales
             let ocurrenciasVocales = vocales(cadena);
-            let resultado = "";
-            for(const [clave, valor] of ocurrenciasVocales){
-                resultado += "{ " + clave + ": " + valor + " }";
+            // si la variable ocurrencia vocales tiene el valor vacio es que no hay vocalesExistentes
+            // si contiene el mapa clave valor, es que si las hay
+            if (ocurrenciasVocales != ''){
+                let resultado = "";
+                //Se recorre el mapa almacenando los datos en la variable resultado 
+                for(const [clave, valor] of ocurrenciasVocales){
+                    resultado += "{ " + clave + ": " + valor + " }";
+                }
+                // se muestra el resultado en el input
+                frase2Result.innerHTML = "Las vocales que hay son: " + resultado + ".";
+            }else{
+                frase2Result.innerHTML = "No hay vocales";
             }
-            frase2Result.innerHTML = "Las vocales que hay son: " + resultado + ".";
         }else{
             frase2Result.innerHTML = "Introduzca una frase";
         }
@@ -100,34 +121,42 @@ document.addEventListener("DOMContentLoaded",function(){
         cadena.toLowerCase();
         // se añade la expresieón regular para indicar los elementos a buscar, en este caso se incluyen tildes y diéresis
         let arryaVocales = cadena.match(/[aeiouáéíóúü]/gi);
-        // se guarda en cada variable las ocurrencias mediante la función filter()
-        let a = arryaVocales.filter(element => element === "a" || element === "á");
-        let e = arryaVocales.filter(element => element === "e" || element === "é");
-        let i = arryaVocales.filter(element => element === "i" || element === "í");
-        let o = arryaVocales.filter(element => element === "o" || element === "ó");
-        let u = arryaVocales.filter(element => element === "u" || element === "ú" || element === "ü");
         // se utiliza map() porque no se conoce las claves en tiempo de compilación
         // se conoceran en tiempo de ejecución 
         let mapVocales = new Map();
-        // añade la clave si hay ocurrencias y se añade el tamaño del array como número de ocurrencias
-        if(a.length > 0){
-            mapVocales.set('a', a.length)
-        }
-        if(e.length > 0){
-            mapVocales.set('e', e.length)
+        // si no hay valores en el array
+        if (arryaVocales === null){
+            // se pone la variable como vacia
+            mapVocales = '';
+        }else{// si la variable array tiene valores 
+            // se guarda en cada variable las ocurrencias mediante la función filter()
+            let a = arryaVocales.filter(element => element === "a" || element === "á");
+            let e = arryaVocales.filter(element => element === "e" || element === "é");
+            let i = arryaVocales.filter(element => element === "i" || element === "í");
+            let o = arryaVocales.filter(element => element === "o" || element === "ó");
+            let u = arryaVocales.filter(element => element === "u" || element === "ú" || element === "ü");
+
+            // añade la clave si hay ocurrencias y se añade el tamaño del array como número de ocurrencias
+            if(a.length > 0){
+                mapVocales.set('a', a.length)
+            }
+            if(e.length > 0){
+                mapVocales.set('e', e.length)
+            }
+
+            if(i.length > 0){
+                mapVocales.set('i', i.length)
+            }
+
+            if(o.length > 0){
+                mapVocales.set('o', o.length)
+            }
+
+            if(u.length > 0){
+                mapVocales.set('u', u.length)
+            }
         }
 
-        if(i.length > 0){
-            mapVocales.set('i', i.length)
-        }
-
-        if(o.length > 0){
-            mapVocales.set('o', o.length)
-        }
-
-        if(u.length > 0){
-            mapVocales.set('u', u.length)
-        }
         return mapVocales;// se devuelve el mapa de vocales con clave valor
     }
 });

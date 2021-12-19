@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded",function(){
     botonEnviar.addEventListener("click", enviarObjetoHttp );    
     // se crea la constante formulario para poder validar las url 
     const formulario = document.getElementById("formulario");
+    // se crea la variable estados para alcenar los estados recibidos
     const estados = document.getElementById("estados");
     // muestra como estado inicial el 0, para ofrecer información al usuario
     estados.innerHTML = 'No inicada';
@@ -86,17 +87,25 @@ document.addEventListener("DOMContentLoaded",function(){
             // Carga datos desde un servidor y coloca los datos devueltos en el elemento seleccionado
             //  es un evento que se ejecuta cuando se termina la solicitud
             ObjetoHttp.onload = function(){
-                let codigoStatus = codigo.innerHTML = this.status + ":";
+                // se crea variable para almacenar los valores del codigo devuelto
+                let codigoStatus = codigo.innerHTML = this.status + ":";// se almacena el codigo numerico
+                // se evalua si el codigo devuelt es vacio o no 
+                // si es vacio se llama a la función para evaluar el codigo devuelto y mostrar el texto correspondiente a su valor de codigo 
+                // Necesario para casos como GitHubPages
                 codigoStatus += (this.statusText ==='') ? obtenerStatus(this.status) : this.statusText;
                 codigo.innerHTML = codigoStatus;
             }
         }
     }
-
+    // funcion para elegir el estado en texto en funcion del valor del código 
     function obtenerStatus(codigo){
+        // se inicializa
         let respuesta ='No hay respuesta'
+        // si el codigo devuelto es numerico
         if(!Number.isNaN(codigo)){
+            // se parsea a la parte entera
             const codigoEstado = parseInt(codigo/100);
+            // se crea el array con los posibles estados
             const estadosPosibles = [
                 'Error desconocido', 
                 'Información recibida con exito', 
@@ -105,7 +114,10 @@ document.addEventListener("DOMContentLoaded",function(){
                 'Solicitud incorrecta',
                 'Error del servidor'
             ];
-            
+            // se almacena en la variable el estado. 
+            // se evalua si el codigo numerico esta entre los valores validos 
+            // ese valor se utiliza como indice para guardar el estado correcto
+            // si no es valido se almacena el estado 0 
             respuesta = (codigoEstado < estadosPosibles.length && codigoEstado > 0) ? estadosPosibles[codigoEstado] : estadosPosibles[0];
 
         }
